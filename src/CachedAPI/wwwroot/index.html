@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cached API</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+      integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background: black;
+        color: white;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+        background: #333;
+      }
+      .space {
+        display: inline-block;
+        height: 15px;
+        width: 15px;
+      }
+      .pure-button {
+        width: 220px;
+      }
+      .title {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title pure-g">
+      <h1>Cached API - Exemplos</h1>
+    </div>
+    <div class="container pure-g">
+      <form action="/api/products/name" class="pure-form">
+        <fieldset>
+          <input
+            autocomplete="off"
+            type="text"
+            name="name"
+            placeholder="Nome do produto"
+          />
+          <span class="space"></span>
+          <button type="submit" class="pure-button pure-button-primary">
+            Buscar por nome
+          </button>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="container pure-g">
+      <form action="/api/products/lower-price" class="pure-form">
+        <fieldset>
+          <input
+            autocomplete="off"
+            type="text"
+            name="price"
+            placeholder="Menor que o preço"
+          />
+          <span class="space"></span>
+          <button type="submit" class="pure-button pure-button-primary">
+            Buscar por menor preço
+          </button>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="container pure-g">
+      <form action="/api/products/upper-price" class="pure-form">
+        <fieldset>
+          <input
+            autocomplete="off"
+            type="text"
+            name="price"
+            placeholder="Maior que o preço"
+          />
+          <span class="space"></span>
+          <button type="submit" class="pure-button pure-button-primary">
+            Buscar por maior preço
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>
