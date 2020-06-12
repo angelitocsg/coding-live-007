@@ -36,13 +36,35 @@
         letter-spacing: 1px;
       }
     </style>
+    <script>
+      function validateByName() {
+        let form = document.getElementById("byName");
+        let formData = new FormData(form);
+        return !!formData.get("name");
+      }
+      function validateByLowerPrice() {
+        let form = document.getElementById("byLowerPrice");
+        let formData = new FormData(form);
+        return !!formData.get("price");
+      }
+      function validateByUpperPrice() {
+        let form = document.getElementById("byUpperPrice");
+        let formData = new FormData(form);
+        return !!formData.get("price");
+      }
+    </script>
   </head>
   <body>
     <div class="title pure-g">
       <h1>Cached API - Exemplos</h1>
     </div>
     <div class="container pure-g">
-      <form action="/api/products/name" class="pure-form">
+      <form
+        id="byName"
+        onsubmit="return validateByName()"
+        action="/api/products/name"
+        class="pure-form"
+      >
         <fieldset>
           <input
             autocomplete="off"
@@ -59,7 +81,12 @@
     </div>
 
     <div class="container pure-g">
-      <form action="/api/products/lower-price" class="pure-form">
+      <form
+        id="byLowerPrice"
+        onsubmit="return validateByLowerPrice()"
+        action="/api/products/lower-price"
+        class="pure-form"
+      >
         <fieldset>
           <input
             autocomplete="off"
@@ -76,7 +103,12 @@
     </div>
 
     <div class="container pure-g">
-      <form action="/api/products/upper-price" class="pure-form">
+      <form
+        id="byUpperPrice"
+        onsubmit="return validateByUpperPrice()"
+        action="/api/products/upper-price"
+        class="pure-form"
+      >
         <fieldset>
           <input
             autocomplete="off"

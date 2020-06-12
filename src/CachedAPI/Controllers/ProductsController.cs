@@ -5,6 +5,7 @@ using CachedAPI.Entities;
 using CachedAPI.Repositories;
 using CachedAPI.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 namespace CachedAPI.Controllers
@@ -14,10 +15,12 @@ namespace CachedAPI.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ILogger<ProductsController> _logger;
+        private readonly IMemoryCache _memCache;
 
-        public ProductsController(ILogger<ProductsController> logger)
+        public ProductsController(ILogger<ProductsController> logger, IMemoryCache memCache)
         {
             _logger = logger;
+            _memCache = memCache;
         }
 
         [HttpGet]
@@ -25,7 +28,7 @@ namespace CachedAPI.Controllers
         {
             var start = DateTime.Now;
             var response = new ProductResponse(
-                products: new ProductRepository().GetAll(),
+                products: new ProductRepository(_memCache).GetAll(),
                 startRequest: start
             );
             return Ok(response);
@@ -36,7 +39,7 @@ namespace CachedAPI.Controllers
         {
             var start = DateTime.Now;
             var response = new ProductResponse(
-                products: new ProductRepository().GetProductsByName(name),
+                products: new ProductRepository(_memCache).GetProductsByName(name),
                 startRequest: start
             );
             return Ok(response);
@@ -47,7 +50,7 @@ namespace CachedAPI.Controllers
         {
             var start = DateTime.Now;
             var response = new ProductResponse(
-                products: new ProductRepository().GetProductsByLowerPrice(price),
+                products: new ProductRepository(_memCache).GetProductsByLowerPrice(price),
                 startRequest: start
             );
             return Ok(response);
@@ -58,7 +61,7 @@ namespace CachedAPI.Controllers
         {
             var start = DateTime.Now;
             var response = new ProductResponse(
-                products: new ProductRepository().GetProductsByUpperPrice(price),
+                products: new ProductRepository(_memCache).GetProductsByUpperPrice(price),
                 startRequest: start
             );
             return Ok(response);
