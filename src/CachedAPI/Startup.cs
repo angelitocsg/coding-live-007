@@ -27,6 +27,11 @@ namespace CachedAPI
         {
             services.AddControllers();
             services.AddMemoryCache();
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("RedisConnection");
+                options.InstanceName = "CL007:";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,6 +4,8 @@ namespace CachedAPI.Entities
 {
     public class Product
     {
+        private Product() { }
+
         public Product(Guid id, string productName, string category, decimal price, string ean13)
         {
             Id = id;

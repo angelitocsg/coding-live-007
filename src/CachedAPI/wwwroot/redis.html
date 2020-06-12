@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cached API</title>
+    <title>Cached API - Redis</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
@@ -56,13 +56,13 @@
   </head>
   <body>
     <div class="title pure-g">
-      <h1>Cached API - Exemplos</h1>
+      <h1>Cached API - Exemplos Redis</h1>
     </div>
     <div class="container pure-g">
       <form
         id="byName"
         onsubmit="return validateByName()"
-        action="/api/products/name"
+        action="/api/productsredis/name"
         class="pure-form"
       >
         <fieldset>
@@ -84,7 +84,7 @@
       <form
         id="byLowerPrice"
         onsubmit="return validateByLowerPrice()"
-        action="/api/products/lower-price"
+        action="/api/productsredis/lower-price"
         class="pure-form"
       >
         <fieldset>
@@ -106,7 +106,7 @@
       <form
         id="byUpperPrice"
         onsubmit="return validateByUpperPrice()"
-        action="/api/products/upper-price"
+        action="/api/productsredis/upper-price"
         class="pure-form"
       >
         <fieldset>
@@ -125,8 +125,8 @@
     </div>
 
     <div class="container">
-      <a href="redis.html" class="pure-button pure-button-primary">
-        Redis
+      <a href="index.html" class="pure-button pure-button-primary">
+        Memory Cache
       </a>
     </div>
   </body>
