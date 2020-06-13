@@ -58,16 +58,16 @@ namespace CachedAPI.Repositories
 
         public IEnumerable<Product> GetProductsByName(string name)
         {
-            var products = _memCache.GetOrCreate("Products_GetByName", entry =>
-            {
-                Console.WriteLine("Created cache entry: Products_GetByName");
+            var products = _memCache.GetOrCreate("Products_GetByName_" + name, entry =>
+              {
+                  Console.WriteLine("Created cache entry: Products_GetByName_" + name);
 
-                entry.SlidingExpiration = TimeSpan.FromSeconds(10); // inactive
-                entry.SetPriority(CacheItemPriority.High); // priority
+                  entry.SlidingExpiration = TimeSpan.FromSeconds(10); // inactive
+                  entry.SetPriority(CacheItemPriority.High); // priority
 
-                System.Threading.Thread.Sleep(3000);
-                return data.Where(it => it.ProductName.Contains(name, StringComparison.InvariantCultureIgnoreCase));
-            });
+                  System.Threading.Thread.Sleep(3000);
+                  return data.Where(it => it.ProductName.Contains(name, StringComparison.InvariantCultureIgnoreCase));
+              });
 
             return products;
         }
